@@ -11,17 +11,23 @@ const addressWarn = document.getElementById("address-warn")
 
 
 //abrir o modal do carinho
-cartBtn.addEventListener("click", function(){
-    cartModal.style.display="flex"
-})
+if (cartBtn && cartModal) {
+    cartBtn.addEventListener("click", function(){
+        cartModal.style.display="flex"
+    })
+}
 
 // fechar ao clicar fora
-cartModal.addEventListener("click", function(event){
-    if(event.target===cartModal){
-        cartModal.style.display="none"
-    }
-})
+if (cartModal) {
+    cartModal.addEventListener("click", function(event){
+        if(event.target===cartModal){
+                cartModal.style.display="none"
+        }
+    })
+}
 
-closeModalBtn.addEventListener("click", function(){
-    cartModal.style.display = "none"
-})
+if (closeModalBtn && cartModal) {
+    closeModalBtn.addEventListener("click", function(){
+        cartModal.style.display = "none"
+    })
+}

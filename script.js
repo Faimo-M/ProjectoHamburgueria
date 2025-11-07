@@ -102,7 +102,7 @@ cart.forEach(item => {
 
 cartTotal.textContent=total.toLocaleString("pt-BR", {
     style: "currency",
-    currency:"BRL"
+    currency:"MZN"
 });
 
 cartCounter.innerHTML=cart.length;
@@ -161,26 +161,32 @@ checkoutBtn.addEventListener("click", function(){
     }
 
     //enviar para o whatsapp o pedido.
+    const date = new Date();
+const hora = date.toLocaleTimeString('pt-PT');
+const data = date.toLocaleDateString('pt-PT');
+
+const cliente = "Faimo"; // pode adicionar input com nome
+const morada = addressInput.value;
    const cartItems = cart.map((item) =>{
     return (
-       ` ${item.name} Quantidade: (${item.quantity}) Price: R$${item.price} |`
+       ` ${item.name} Quantidade: (${item.quantity}) Price: MZN${item.price} |`
     )
    } ).join("") 
 
     const recibo = `
-🧾 *Recibo de Pedido*
+ *Recibo de Pedido*
 --------------------------------
-👤 *Cliente:* ${cliente}
-📅 *Data:* ${data}
-⏰ *Hora:* ${hora}
-🏠 *Morada:* ${morada}
+ *Cliente:* ${cliente}
+ *Data:* ${data}
+*Hora:* ${hora}
+ *Morada:* ${morada}
 
-🛒 *Itens do Pedido:*
+ *Itens do Pedido:*
 ${cartItems}
 --------------------------------
-💰 *Total:* R$${total.toFixed(2)}
 
-✅ *Obrigado pela preferência!*
+
+ *Obrigado pela preferência!*
 `;
 
    const message = encodeURIComponent(recibo)

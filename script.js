@@ -88,11 +88,11 @@ cart.forEach(item => {
         <div class="flex items-center justify-between">
             <div class="flex-1">
                 <p class="font-medium">${item.name}</p>
-                <p>Qtd: ${item.quantity}</p>
+                <p>Quantidade: ${item.quantity}</p>
                 <p class="font-medium mt-2">MZN ${item.price.toFixed(2)}</p>
             </div>
                     <div class="flex items-center justify-end ml-4">
-                        <button class="remove-from-cart-btn text-sm font-bold text-black bg-red-600 px-3 py-1 rounded" data-name="${item.name}">Remover</button>
+                        <button class="remove-from-cart-btn text-sm font-bold text-white bg-red-600 px-3 py-1 rounded" data-name="${item.name}">Remover</button>
                     </div>
         </div>`
 
@@ -191,28 +191,28 @@ const data = date.toLocaleDateString('pt-PT');
 
      const cliente = clientNameInput && clientNameInput.value ? clientNameInput.value : "Cliente";
      const morada = addressInput.value;
-   const cartItems = cart.map((item) =>{
-    return (
-       ` ${item.name} Quantidade: (${item.quantity}) Price: MZN${item.price} |`
-    )
-   } ).join("") 
+    const cartItems = cart.map((item) =>{
+     return (
+         `- ${item.name} — Quantidade: ${item.quantity} — Preço: MZN ${item.price.toFixed(2)}`
+     )
+    } ).join("\n") 
      // calcular total
      const total = cart.reduce((sum, it) => sum + it.price * it.quantity, 0)
 
-     const recibo = `
-*Recibo de Pedido*
+    const recibo = `
+Recibo do pedido
 --------------------------------
-*Cliente:* ${cliente}
-*Data:* ${data}
-*Hora:* ${hora}
-*Morada:* ${morada}
+Cliente: ${cliente}
+Data: ${data}
+Hora: ${hora}
+Morada: ${morada}
 
-*Itens do Pedido:*
+Itens do pedido:
 ${cartItems}
 --------------------------------
-*Total:* MZN ${total.toFixed(2)}
+Total: MZN ${total.toFixed(2)}
 
-*Obrigado pela preferência!*
+Obrigado pela preferência!
 `;
 
      const message = encodeURIComponent(recibo)

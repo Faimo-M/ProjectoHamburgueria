@@ -111,13 +111,37 @@ cartCounter.innerHTML=cart.length;
 
 //funcao para remover item do carrinho.
 
-cartItemsContainer.addEventListener("click", function(event){
-    const btn = event.target.closest && event.target.closest('.remove-from-cart-btn')
-    if(btn){
-        const name = btn.getAttribute('data-name')
-        removeItemCart(name)
-    }
-})
+if (cartItemsContainer) {
+    cartItemsContainer.addEventListener("click", function(event){
+        let btn = null;
+
+        // Prefer using closest if available on the event target
+        if (event.target && typeof event.target.closest === 'function') {
+            btn = event.target.closest('.remove-from-cart-btn');
+        }
+
+        // If target is a text node or closest didn't find, try parentElement
+        if (!btn && event.target && event.target.parentElement) {
+            btn = event.target.parentElement.closest('.remove-from-cart-btn');
+        }
+
+        // Fallback: use composedPath (for Shadow DOM or weird targets)
+        if (!btn) {
+            const path = (typeof event.composedPath === 'function') ? event.composedPath() : (event.path || []);
+            for (const el of path) {
+                if (el && el.classList && el.classList.contains && el.classList.contains('remove-from-cart-btn')) {
+                    btn = el;
+                    break;
+                }
+            }
+        }
+
+        if (btn) {
+            const name = btn.getAttribute('data-name');
+            removeItemCart(name);
+        }
+    })
+}
 
 function removeItemCart(name){
     const index = cart.findIndex(item => item.name === name);

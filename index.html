@@ -19,7 +19,7 @@
         <h1 class="text-4xl mt-4 mb-2 font-bold text-white">SUUUPER BURGUER</h1>
         <span class="text-white font-medium">Avenida 25 de setembro!</span>
         <div class="bg-green-600 px-4 py-1 rounded-lg mt-5" id="date-span">
-            <span class="text-white font-medium">Seg a dom - 08:00 às 22:00</span>
+            <span class="text-white font-medium">Seg a dom - 18:00 às 22:00</span>
         </div>
     </div>
   </header>
@@ -40,10 +40,10 @@
       <p class="font-bold">hambuerguer smash</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg">MZN 25.00</p>
+        <p class="font-bold text-lg">R$ 18.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="hambuerguer smash"
-        data-price="25.00">
+        data-price="18.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -59,10 +59,10 @@
       <p class="font-bold">hambuerguer duplo</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg">MZN 35.00</p>
+        <p class="font-bold text-lg">R$ 34.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="hambuerguer duplo"
-        data-price="35.00">
+        data-price="34.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -78,10 +78,10 @@
       <p class="font-bold">hambuerguer mexicano</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg">MZN 40.00</p>
+        <p class="font-bold text-lg">R$ 24.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="hambuerguer mexicano"
-        data-price="25.00">
+        data-price="24.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -98,10 +98,10 @@
       <p class="font-bold">hambuerguer moza</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg">MZN 25.00</p>
+        <p class="font-bold text-lg">R$ 14.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="hambuerguer moza"
-        data-price="25.00">
+        data-price="14.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -126,10 +126,10 @@
       <p class="font-bold">Coca-cola 300 ML</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg">MZN 20.00</p>
+        <p class="font-bold text-lg">R$ 8.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="Coca-cola"
-        data-price="20.00">
+        data-price="8.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -146,10 +146,10 @@
       <p class="font-bold">Guarana 300 ML</p>
       <p class="text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum obcaecati animi saepe, sunt atque exercitationem tenetur iste, molestias temporibus quod ratione facilis numquam veritatis libero mollitia suscipit praesentium autem ducimus.</p>
       <div class="flex items-center gap-2 justify-between mt-3 ">
-        <p class="font-bold text-lg"> MZN 15.00</p>
+        <p class="font-bold text-lg">R$ 7.90</p>
         <button class="bg-gray-900 px-5 rounded  add-to-cart-btn"
         data-name="Guarana"
-        data-price="15.00">
+        data-price="7.90">
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
       </div>
@@ -172,6 +172,8 @@ id="cart-modal">
 
   <div id="cart-items" class="flex flex-col justify-start mb-2 overflow-y-auto max-h-60 space-y-2"></div>
     <p class="font-bold">Total: <span id="cart-total">0.00</span></p>
+    <p class="font-bold mt-4"> Nome do Cliente</p>
+    <input type="text" placeholder="digite o nome do cliente" id="client-name" class="w-full border-2 p-1 rounded my-1">
     <p class="font-bold mt-4"> Morada do Cliente</p>
     <input type="text" placeholder="digite a sua Morada " id="address" class="w-full border-2 p-1 rounded my-1">
   <p class="text-red-600 hidden" id="address-warn">digite sua morada completa</p>

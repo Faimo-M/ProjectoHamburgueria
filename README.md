@@ -23,6 +23,11 @@ Por que a imagem de fundo (`bg-home`) pode não aparecer
 - Se `Styles/output.css` foi gerado antes da correção do `tailwind.config.js`, a utilidade `.bg-home` não estará presente no arquivo final.
 - É necessário reconstruir o CSS (ver instruções abaixo) para que `.bg-home { background-image: url('./assets/bg.png') }` seja gerado.
 
+Novas funcionalidades adicionadas
+- Campo `Nome do Cliente` no modal do carrinho (`id="client-name"`). Esse nome será incluído no recibo enviado via WhatsApp.
+- O total do pedido agora é calculado e incluído no recibo enviado via WhatsApp.
+- Os botões "Remover" no modal do carrinho foram estilizados e centralizados verticalmente; o container de itens do carrinho também possui rolagem (overflow-y) quando necessário.
+
 Como reproduzir / build (passo a passo)
 
 Pré-requisitos

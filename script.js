@@ -8,6 +8,7 @@ const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
 const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
+const clientNameInput = document.getElementById("client-name")
 
 
 let cart = [];
@@ -79,22 +80,21 @@ function updateCartModal(){
 cartItemsContainer.innerHTML = "";
 let total = 0;
 cart.forEach(item => {
-    const cartItemElement = document.createElement("div");
-    cartItemElement.classList.add("flex", "justify-between", "mb-4", "flex-col")
+        const cartItemElement = document.createElement("div");
+        cartItemElement.classList.add("mb-4")
 
-    cartItemElement.innerHTML = `
-    <div class="flex items-center justify-between"> 
-         <div>
-         <p class="font-medium">${item.name}</p>
-         <p> Qtd: ${item.quantity}</p>
-         <p class="font-medium mt-2">${item.price.toFixed(2)}</p>
-         </div>
-         
-         <button class="remove-from-cart-btn" data-name="${item.name}">
-         Remover
-         <button/>
-         
-    </div>`
+        // layout: left = info, right = remove button (centered vertically)
+        cartItemElement.innerHTML = `
+        <div class="flex items-center justify-between">
+            <div class="flex-1">
+                <p class="font-medium">${item.name}</p>
+                <p>Qtd: ${item.quantity}</p>
+                <p class="font-medium mt-2">MZN ${item.price.toFixed(2)}</p>
+            </div>
+            <div class="flex items-center justify-end ml-4">
+                <button class="remove-from-cart-btn text-sm text-white bg-red-600 px-3 py-1 rounded" data-name="${item.name}">Remover</button>
+            </div>
+        </div>`
 
     total += item.price * item.quantity;
     cartItemsContainer.appendChild(cartItemElement)
@@ -112,10 +112,10 @@ cartCounter.innerHTML=cart.length;
 //funcao para remover item do carrinho.
 
 cartItemsContainer.addEventListener("click", function(event){
-    if(event.target.classList.contains("remove-from-cart-btn")){
-        const name = event.target.getAttribute("data-name")
-    
-        removeItemCart(name);
+    const btn = event.target.closest && event.target.closest('.remove-from-cart-btn')
+    if(btn){
+        const name = btn.getAttribute('data-name')
+        removeItemCart(name)
     }
 })
 
@@ -165,37 +165,42 @@ checkoutBtn.addEventListener("click", function(){
 const hora = date.toLocaleTimeString('pt-PT');
 const data = date.toLocaleDateString('pt-PT');
 
-const cliente = "Faimo"; // pode adicionar input com nome
-const morada = addressInput.value;
+     const cliente = clientNameInput && clientNameInput.value ? clientNameInput.value : "Cliente";
+     const morada = addressInput.value;
    const cartItems = cart.map((item) =>{
     return (
        ` ${item.name} Quantidade: (${item.quantity}) Price: MZN${item.price} |`
     )
    } ).join("") 
+     // calcular total
+     const total = cart.reduce((sum, it) => sum + it.price * it.quantity, 0)
 
-    const recibo = `
- *Recibo de Pedido*
+     const recibo = `
+*Recibo de Pedido*
 --------------------------------
- *Cliente:* ${cliente}
- *Data:* ${data}
+*Cliente:* ${cliente}
+*Data:* ${data}
 *Hora:* ${hora}
- *Morada:* ${morada}
+*Morada:* ${morada}
 
- *Itens do Pedido:*
+*Itens do Pedido:*
 ${cartItems}
 --------------------------------
+*Total:* MZN ${total.toFixed(2)}
 
-
- *Obrigado pela preferência!*
+*Obrigado pela preferência!*
 `;
 
-   const message = encodeURIComponent(recibo)
-   const phone = "+258878092230"
+     const message = encodeURIComponent(recibo)
+     const phone = "+258878092230"
 
-   window.open(`https://wa.me/${phone}?text=${message} Morada: ${addressInput.value}`, "_blank")
+     window.open(`https://wa.me/${phone}?text=${message}`, "_blank")
 
-   cart =[];
-   updateCartModal();
+     // limpar
+     cart = [];
+     updateCartModal();
+     if(addressInput) addressInput.value = ''
+     if(clientNameInput) clientNameInput.value = ''
 })
 
 //verificar a hora e verificando se esta aberto ou nao.

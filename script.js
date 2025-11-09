@@ -92,7 +92,7 @@ cart.forEach(item => {
                 <p class="font-medium mt-2">MZN ${item.price.toFixed(2)}</p>
             </div>
                     <div class="flex items-center justify-end ml-4">
-                        <button class="remove-from-cart-btn text-sm font-bold text-white bg-red-600 px-3 py-1 rounded" data-name="${item.name}">Remover</button>
+                        <button class="remove-from-cart-btn text-sm font-bold text-black bg-red-600 px-3 py-1 rounded" data-name="${item.name}">Remover</button>
                     </div>
         </div>`
 
